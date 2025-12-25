@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Guía Completa de Django Admin: De Básico a Avanzado - Curso Django Completo</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Curso Django Completo</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Django</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../modelos/" class="dropdown-item">Modelos</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Paquetes</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../paquetes/extensiones/" class="dropdown-item">Extensiones Esenciales</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Primeros Pasos</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../primeros-pasos/configuracion-inicial/" class="dropdown-item">Configuración Inicial</a>
+</li>
+                                    
+<li>
+    <a href="../../primeros-pasos/usuarios-autenticacion-perfiles/" class="dropdown-item">Usuarios, Autenticación y Perfiles</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Produccion</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../produccion/preparar-produccion/" class="dropdown-item">Configuración para Producción</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#guia-completa-de-django-admin-de-basico-a-avanzado" class="nav-link">Guía Completa de Django Admin: De Básico a Avanzado</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-introduccion-al-django-admin" class="nav-link">1. Introducción al Django Admin</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-personalizacion-basica-del-admin" class="nav-link">2. Personalización Básica del Admin</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-personalizacion-de-la-visualizacion-de-modelos" class="nav-link">3. Personalización de la Visualización de Modelos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-personalizacion-de-formularios-en-el-admin" class="nav-link">4. Personalización de Formularios en el Admin</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-acciones-personalizadas" class="nav-link">5. Acciones Personalizadas</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-inlines-modelos-relacionados" class="nav-link">6. Inlines (Modelos Relacionados)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-admin-avanzado" class="nav-link">7. Admin Avanzado</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-seguridad-y-permisos" class="nav-link">8. Seguridad y Permisos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-optimizacion-de-rendimiento" class="nav-link">9. Optimización de Rendimiento</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-personalizacion-completa-de-templates" class="nav-link">10. Personalización Completa de Templates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#11-admin-extendido-con-paquetes-de-terceros" class="nav-link">11. Admin Extendido con Paquetes de Terceros</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#12-buenas-practicas" class="nav-link">12. Buenas Prácticas</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#conclusion-y-resumen" class="nav-link">Conclusión y Resumen</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="guia-completa-de-django-admin-de-basico-a-avanzado">Guía Completa de Django Admin: De Básico a Avanzado</h1>
+<p>El Django Admin es una de las joyas de este framework, proporcionando una interfaz de administración generada automáticamente pero altamente personalizable. Esta guía cubre todas sus capacidades, desde lo más básico hasta técnicas avanzadas.</p>
+<h2 id="1-introduccion-al-django-admin">1. Introducción al Django Admin</h2>
+<p>Django Admin es una aplicación que genera automáticamente una interfaz de administración basada en tus modelos. Es perfecta para operaciones CRUD (Crear, Leer, Actualizar, Eliminar) internas sin necesidad de crear vistas personalizadas.</p>
+<h3 id="configuracion-inicial">Configuración inicial</h3>
+<p>El admin viene preinstalado en <code>INSTALLED_APPS</code> como <code>django.contrib.admin</code>. Para activarlo:</p>
+<pre><code class="language-python"># En urls.py
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # Otras URLs...
+]
+</code></pre>
+<h3 id="creacion-de-superusuario">Creación de superusuario</h3>
+<p>Para acceder al admin necesitas crear un superusuario:</p>
+<pre><code class="language-bash">python manage.py createsuperuser
+</code></pre>
+<h3 id="registro-basico-de-modelos">Registro básico de modelos</h3>
+<pre><code class="language-python"># En app/admin.py
+from django.contrib import admin
+from .models import MiModelo
+
+admin.site.register(MiModelo)
+</code></pre>
+<p>Con esto mínimo, Django generará una interfaz completa para gestionar instancias de <code>MiModelo</code>.</p>
+<h2 id="2-personalizacion-basica-del-admin">2. Personalización Básica del Admin</h2>
+<h3 id="usando-decoradores">Usando decoradores</h3>
+<pre><code class="language-python"># En app/admin.py
+from django.contrib import admin
+from .models import Producto
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'precio', 'stock', 'categoria')
+    list_filter = ('categoria', 'activo')
+    search_fields = ('nombre', 'descripcion')
+    ordering = ('-fecha_creacion',)
+</code></pre>
+<h3 id="opciones-principales">Opciones principales</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    # Campos a mostrar en la lista
+    list_display = ('nombre', 'precio', 'stock', 'categoria')
+
+    # Controles para filtrar en la barra lateral
+    list_filter = ('categoria', 'activo')
+
+    # Campos por los que se puede buscar
+    search_fields = ('nombre', 'descripcion')
+
+    # Orden por defecto
+    ordering = ('-fecha_creacion',)
+
+    # Campos para edición rápida en la lista
+    list_editable = ('precio', 'stock')
+
+    # Controla cuántos elementos se muestran por página
+    list_per_page = 25
+
+    # Agrupación de campos en el formulario de edición/creación
+    fieldsets = (
+        ('Información básica', {
+            'fields': ('nombre', 'descripcion', 'imagen')
+        }),
+        ('Información comercial', {
+            'fields': ('precio', 'stock', 'categoria')
+        }),
+        ('Metadatos', {
+            'classes': ('collapse',),  # Sección colapsable
+            'fields': ('slug', 'activo', 'fecha_creacion'),
+        }),
+    )
+
+    # Campos de solo lectura
+    readonly_fields = ('fecha_creacion',)
+</code></pre>
+<h2 id="3-personalizacion-de-la-visualizacion-de-modelos">3. Personalización de la Visualización de Modelos</h2>
+<h3 id="campos-calculados-o-metodos-como-columnas">Campos calculados o métodos como columnas</h3>
+<pre><code class="language-python">@admin.register(Pedido)
+class PedidoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'cliente', 'fecha', 'get_total', 'estado')
+
+    def get_total(self, obj):
+        return f&quot;${obj.total:.2f}&quot;
+
+    # Personalizar encabezado y ordenamiento
+    get_total.short_description = 'Total Pedido'
+    get_total.admin_order_field = 'total'  # Permite ordenar por este campo
+</code></pre>
+<h3 id="personalizacion-con-html">Personalización con HTML</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'precio', 'estado_stock', 'miniatura')
+
+    def estado_stock(self, obj):
+        if obj.stock &lt;= 0:
+            return format_html('&lt;span style=&quot;color: red;&quot;&gt;Agotado&lt;/span&gt;')
+        if obj.stock &lt; 10:
+            return format_html('&lt;span style=&quot;color: orange;&quot;&gt;Bajo ({0})&lt;/span&gt;', obj.stock)
+        return format_html('&lt;span style=&quot;color: green;&quot;&gt;Disponible ({0})&lt;/span&gt;', obj.stock)
+
+    estado_stock.short_description = 'Estado del stock'
+
+    def miniatura(self, obj):
+        if obj.imagen:
+            return format_html('&lt;img src=&quot;{0}&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;', obj.imagen.url)
+        return &quot;Sin imagen&quot;
+
+    miniatura.short_description = 'Imagen'
+</code></pre>
+<h3 id="campos-con-enlace-a-detalles-u-otras-paginas">Campos con enlace a detalles u otras páginas</h3>
+<pre><code class="language-python">@admin.register(Pedido)
+class PedidoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'cliente_link', 'fecha', 'total')
+
+    def cliente_link(self, obj):
+        url = reverse('admin:clientes_cliente_change', args=[obj.cliente.id])
+        return format_html('&lt;a href=&quot;{}&quot;&gt;{}&lt;/a&gt;', url, obj.cliente.nombre)
+
+    cliente_link.short_description = 'Cliente'
+    cliente_link.admin_order_field = 'cliente__nombre'  # Ordenar por nombre del cliente
+</code></pre>
+<h2 id="4-personalizacion-de-formularios-en-el-admin">4. Personalización de Formularios en el Admin</h2>
+<h3 id="usando-modelform-personalizado">Usando ModelForm personalizado</h3>
+<pre><code class="language-python">from django import forms
+from .models import Producto
+
+class ProductoAdminForm(forms.ModelForm):
+    descripcion_corta = forms.CharField(max_length=100, help_text=&quot;Versión corta para listados&quot;)
+
+    class Meta:
+        model = Producto
+        fields = '__all__'
+
+    def clean(self):
+        cleaned_data = super().clean()
+        precio = cleaned_data.get('precio')
+        costo = cleaned_data.get('costo')
+
+        if precio and costo and precio &lt; costo:
+            raise forms.ValidationError(&quot;El precio no puede ser menor que el costo&quot;)
+
+        return cleaned_data
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    form = ProductoAdminForm
+</code></pre>
+<h3 id="personalizacion-avanzada-de-campos">Personalización avanzada de campos</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    # Usar widgets personalizados para campos específicos
+    formfield_overrides = {
+        models.TextField: {'widget': forms.Textarea(attrs={'rows': 4, 'cols': 40})},
+        models.CharField: {'widget': forms.TextInput(attrs={'class': 'special'})},
+    }
+
+    # Personalizar un campo específico
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'descripcion':
+            kwargs['widget'] = forms.Textarea(attrs={'rows': 3})
+
+        if db_field.name == 'categoria':
+            kwargs['queryset'] = Categoria.objects.filter(activa=True)
+            kwargs['empty_label'] = &quot;Seleccione una categoría&quot;
+
+        return super().formfield_for_dbfield(db_field, **kwargs)
+</code></pre>
+<h3 id="autocompletes-para-campos-relacionales">Autocompletes para campos relacionales</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    # Para campos ForeignKey
+    autocomplete_fields = ['categoria', 'marca']
+
+    # Relacionados: en los modelos referenciados también debe configurarse
+    search_fields = ['nombre', 'referencia']  # Necesario para que funcione como destino de autocomplete
+</code></pre>
+<h2 id="5-acciones-personalizadas">5. Acciones Personalizadas</h2>
+<h3 id="accion-basica">Acción básica</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    actions = ['marcar_como_destacados', 'actualizar_precios']
+
+    def marcar_como_destacados(self, request, queryset):
+        queryset.update(destacado=True)
+        self.message_user(request, f&quot;{queryset.count()} productos marcados como destacados&quot;)
+
+    marcar_como_destacados.short_description = &quot;Marcar productos seleccionados como destacados&quot;
+</code></pre>
+<h3 id="accion-con-confirmacion">Acción con confirmación</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    actions = ['desactivar_productos']
+
+    def desactivar_productos(self, request, queryset):
+        if request.POST.get('post'):  # Confirmación recibida
+            productos_actualizados = queryset.update(activo=False)
+            self.message_user(request, f&quot;{productos_actualizados} productos desactivados&quot;)
+            return None
+
+        # Mostrar página de confirmación
+        context = {
+            'queryset': queryset,
+            'action': 'desactivar_productos',
+            'title': 'Desactivar productos seleccionados',
+            'content': f&quot;¿Está seguro de querer desactivar {queryset.count()} productos?&quot;
+        }
+        return render(request, 'admin/confirm_action.html', context)
+
+    desactivar_productos.short_description = &quot;Desactivar productos seleccionados&quot;
+</code></pre>
+<p>El template <code>admin/confirm_action.html</code>:</p>
+<pre><code class="language-html">{% extends &quot;admin/base_site.html&quot; %}
+{% block content %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;p&gt;{{ content }}&lt;/p&gt;
+&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
+    {% csrf_token %}
+    {% for obj in queryset %}
+    &lt;input type=&quot;hidden&quot; name=&quot;_selected_action&quot; value=&quot;{{ obj.pk }}&quot; /&gt;
+    {% endfor %}
+    &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;{{ action }}&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;post&quot; value=&quot;yes&quot; /&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Sí, estoy seguro&quot; /&gt;
+    &lt;a href=&quot;{{ request.META.HTTP_REFERER }}&quot; class=&quot;button cancel-link&quot;&gt;No, cancelar&lt;/a&gt;
+&lt;/form&gt;
+{% endblock %}
+</code></pre>
+<h3 id="accion-con-formulario">Acción con formulario</h3>
+<pre><code class="language-python">class AjustarPreciosForm(forms.Form):
+    porcentaje = forms.DecimalField(min_value=-100, max_value=100, decimal_places=2,
+                                   help_text=&quot;Porcentaje para ajustar precios (positivo para aumentar, negativo para disminuir)&quot;)
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    actions = ['ajustar_precios']
+
+    def ajustar_precios(self, request, queryset):
+        if 'apply' in request.POST:  # Formulario enviado
+            form = AjustarPreciosForm(request.POST)
+            if form.is_valid():
+                porcentaje = form.cleaned_data['porcentaje']
+                factor = 1 + (porcentaje / 100)
+
+                # Usar F para actualización eficiente
+                from django.db.models import F
+                productos_actualizados = queryset.update(precio=F('precio') * factor)
+
+                self.message_user(request, f&quot;{productos_actualizados} productos actualizados. Precios {'+' if porcentaje &gt; 0 else ''}{porcentaje}%&quot;)
+                return HttpResponseRedirect(request.get_full_path())
+        else:
+            form = AjustarPreciosForm()
+
+        # Mostrar formulario
+        return render(request, 'admin/ajustar_precios.html', {
+            'queryset': queryset,
+            'form': form,
+            'title': 'Ajustar precios',
+        })
+
+    ajustar_precios.short_description = &quot;Ajustar precios de productos seleccionados&quot;
+</code></pre>
+<p>Template <code>admin/ajustar_precios.html</code>:</p>
+<pre><code class="language-html">{% extends &quot;admin/base_site.html&quot; %}
+{% block content %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;p&gt;Ajustar precios para {{ queryset.count }} productos seleccionados.&lt;/p&gt;
+&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
+    {% csrf_token %}
+    &lt;div&gt;
+        {{ form.as_p }}
+    &lt;/div&gt;
+    {% for obj in queryset %}
+    &lt;input type=&quot;hidden&quot; name=&quot;_selected_action&quot; value=&quot;{{ obj.pk }}&quot; /&gt;
+    {% endfor %}
+    &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;ajustar_precios&quot; /&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;apply&quot; value=&quot;Ajustar precios&quot; /&gt;
+    &lt;a href=&quot;{{ request.META.HTTP_REFERER }}&quot; class=&quot;button cancel-link&quot;&gt;Cancelar&lt;/a&gt;
+&lt;/form&gt;
+{% endblock %}
+</code></pre>
+<h2 id="6-inlines-modelos-relacionados">6. Inlines (Modelos Relacionados)</h2>
+<h3 id="configuracion-basica-para-relaciones-uno-a-muchos">Configuración básica para relaciones uno a muchos</h3>
+<pre><code class="language-python">class DetalleProductoInline(admin.TabularInline):
+    model = DetalleProducto
+    extra = 1  # Cuántas filas vacías mostrar
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    inlines = [DetalleProductoInline]
+</code></pre>
+<h3 id="opciones-avanzadas-para-inlines">Opciones avanzadas para inlines</h3>
+<pre><code class="language-python">class ImagenProductoInline(admin.TabularInline):
+    model = ImagenProducto
+    extra = 1
+    max_num = 5  # Número máximo de ítems
+    min_num = 0  # Número mínimo de ítems
+    verbose_name = &quot;Imagen&quot;
+    verbose_name_plural = &quot;Imágenes&quot;
+    can_delete = True
+    show_change_link = True  # Muestra enlace al formulario de edición del modelo relacionado
+
+    # Campos de solo lectura
+    readonly_fields = ('thumbnail',)
+
+    def thumbnail(self, obj):
+        if obj.imagen:
+            return format_html('&lt;img src=&quot;{0}&quot; width=&quot;50&quot; height=&quot;50&quot; /&gt;', obj.imagen.url)
+        return &quot;Sin imagen&quot;
+</code></pre>
+<h3 id="stackedinline-vs-tabularinline">StackedInline vs TabularInline</h3>
+<pre><code class="language-python"># Formato de apilado (más espacio, mejor para muchos campos)
+class EspecificacionTecnicaInline(admin.StackedInline):
+    model = EspecificacionTecnica
+    extra = 1
+
+# Formato de tabla (más compacto)
+class ComentarioProductoInline(admin.TabularInline):
+    model = ComentarioProducto
+    extra = 0
+</code></pre>
+<h3 id="inlines-con-formularios-personalizados">Inlines con formularios personalizados</h3>
+<pre><code class="language-python">class VarianteProductoForm(forms.ModelForm):
+    class Meta:
+        model = VarianteProducto
+        fields = '__all__'
+
+    def clean(self):
+        cleaned_data = super().clean()
+        # Validaciones personalizadas
+        return cleaned_data
+
+class VarianteProductoInline(admin.TabularInline):
+    model = VarianteProducto
+    form = VarianteProductoForm
+    extra = 1
+</code></pre>
+<h2 id="7-admin-avanzado">7. Admin Avanzado</h2>
+<h3 id="filtros-personalizados">Filtros personalizados</h3>
+<pre><code class="language-python">class PrecioRangoFilter(admin.SimpleListFilter):
+    title = 'rango de precio'  # Título mostrado en el filtro
+    parameter_name = 'precio_rango'  # Parámetro URL
+
+    def lookups(self, request, model_admin):
+        &quot;&quot;&quot;Devuelve una lista de tuplas (valor, nombre) para los filtros&quot;&quot;&quot;
+        return (
+            ('bajo', 'Menos de $50'),
+            ('medio', 'Entre $50 y $200'),
+            ('alto', 'Más de $200'),
+        )
+
+    def queryset(self, request, queryset):
+        &quot;&quot;&quot;Filtra el queryset según el valor seleccionado&quot;&quot;&quot;
+        if self.value() == 'bajo':
+            return queryset.filter(precio__lt=50)
+        if self.value() == 'medio':
+            return queryset.filter(precio__gte=50, precio__lte=200)
+        if self.value() == 'alto':
+            return queryset.filter(precio__gt=200)
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_filter = (PrecioRangoFilter, 'categoria', 'activo')
+</code></pre>
+<h3 id="filtros-relacionales-anidados">Filtros relacionales anidados</h3>
+<pre><code class="language-python">class CategoriaFiltro(admin.SimpleListFilter):
+    title = 'categoría'
+    parameter_name = 'categoria'
+
+    def lookups(self, request, model_admin):
+        categorias = Categoria.objects.filter(activa=True)
+        return [(categoria.id, categoria.nombre) for categoria in categorias]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(categoria_id=self.value())
+
+class MarcaFiltro(admin.SimpleListFilter):
+    title = 'marca'
+    parameter_name = 'marca'
+
+    def lookups(self, request, model_admin):
+        # Filtrar marcas según la categoría seleccionada
+        categoria_id = request.GET.get('categoria')
+        qs = Marca.objects.all()
+
+        if categoria_id:
+            qs = qs.filter(productos__categoria_id=categoria_id).distinct()
+
+        return [(marca.id, marca.nombre) for marca in qs]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(marca_id=self.value())
+
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_filter = (CategoriaFiltro, MarcaFiltro)
+</code></pre>
+<h3 id="busqueda-avanzada-y-busqueda-en-campos-relacionados">Búsqueda avanzada y búsqueda en campos relacionados</h3>
+<pre><code class="language-python">@admin.register(Pedido)
+class PedidoAdmin(admin.ModelAdmin):
+    search_fields = (
+        'referencia',  # Búsqueda exacta
+        'cliente__nombre',  # Búsqueda en campo de modelo relacionado
+        'cliente__email',
+        '^referencia_externa',  # Búsqueda que comienza con (startswith)
+        '=telefono',  # Búsqueda exacta
+        '@direccion',  # Búsqueda de texto completo (si la BD lo soporta)
+    )
+</code></pre>
+<h3 id="personalizacion-del-queryset-mostrado">Personalización del queryset mostrado</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        &quot;&quot;&quot;Personalizar el queryset base del admin&quot;&quot;&quot;
+        qs = super().get_queryset(request)
+
+        # Prefetch y select_related para optimizar
+        qs = qs.select_related('categoria', 'marca')
+
+        # Filtrar según el usuario
+        if not request.user.is_superuser:
+            # Vendedores solo ven productos de sus categorías asignadas
+            return qs.filter(categoria__in=request.user.categorias_asignadas.all())
+
+        return qs
+</code></pre>
+<h3 id="personalizacion-de-urls-en-el-admin">Personalización de URLs en el admin</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                'importar-productos/',
+                self.admin_site.admin_view(self.importar_productos_view),
+                name='importar-productos',
+            ),
+            path(
+                'exportar-productos/',
+                self.admin_site.admin_view(self.exportar_productos_view),
+                name='exportar-productos',
+            ),
+        ]
+        return custom_urls + urls
+
+    def importar_productos_view(self, request):
+        # Implementación de la vista personalizada
+        context = {
+            **self.admin_site.each_context(request),
+            'title': 'Importar Productos',
+            'form': ImportarProductosForm(),
+        }
+        return render(request, 'admin/importar_productos.html', context)
+</code></pre>
+<p>Para añadir enlace a la vista personalizada:</p>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    # [...] other settings
+
+    def changelist_view(self, request, extra_context=None):
+        # Agregar botones para importar/exportar en la lista
+        extra_context = extra_context or {}
+        extra_context['import_url'] = reverse('admin:importar-productos')
+        extra_context['export_url'] = reverse('admin:exportar-productos')
+        return super().changelist_view(request, extra_context=extra_context)
+</code></pre>
+<h2 id="8-seguridad-y-permisos">8. Seguridad y Permisos</h2>
+<h3 id="control-de-permisos-basicos">Control de permisos básicos</h3>
+<p>Django incluye permisos por defecto para cada modelo: <code>add</code>, <code>change</code>, <code>delete</code> y <code>view</code>.</p>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    # Especifica qué permisos se requieren para acciones específicas
+    def has_add_permission(self, request):
+        # Solo administradores y gerentes pueden crear productos
+        return request.user.is_superuser or request.user.groups.filter(name='Gerentes').exists()
+
+    def has_change_permission(self, request, obj=None):
+        # Verificar si puede editar este objeto específico
+        if obj and obj.bloqueado:
+            return request.user.is_superuser  # Solo superusuarios pueden editar productos bloqueados
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        # Nadie puede eliminar productos con ventas asociadas
+        if obj and obj.tiene_ventas():
+            return False
+        return request.user.is_superuser
+
+    def has_view_permission(self, request, obj=None):
+        # Cualquier staff puede ver productos
+        return request.user.is_staff
+</code></pre>
+<h3 id="permisos-personalizados">Permisos personalizados</h3>
+<pre><code class="language-python"># En tu models.py
+class Producto(models.Model):
+    # [...campos del modelo...]
+
+    class Meta:
+        permissions = [
+            ('can_publish', 'Puede publicar productos'),
+            ('can_feature', 'Puede destacar productos'),
+            ('can_discount', 'Puede aplicar descuentos'),
+        ]
+
+# En tu admin.py
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    actions = ['publicar_productos', 'destacar_productos', 'aplicar_descuento']
+
+    def publicar_productos(self, request, queryset):
+        if not request.user.has_perm('productos.can_publish'):
+            self.message_user(request, &quot;No tienes permiso para publicar productos&quot;, level=messages.ERROR)
+            return
+
+        # Implementación
+        queryset.update(publicado=True)
+        self.message_user(request, f&quot;{queryset.count()} productos publicados&quot;)
+
+    # También puedes verificar permisos en otras partes:
+    def get_actions(self, request):
+        actions = super().get_actions(request)
+        if not request.user.has_perm('productos.can_discount'):
+            if 'aplicar_descuento' in actions:
+                del actions['aplicar_descuento']
+        return actions
+</code></pre>
+<h3 id="filtrado-de-objetos-por-usuario">Filtrado de objetos por usuario</h3>
+<pre><code class="language-python">@admin.register(Pedido)
+class PedidoAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        # Superusuarios ven todo
+        if request.user.is_superuser:
+            return qs
+
+        # Gerentes ven todos los pedidos de su tienda
+        if request.user.groups.filter(name='Gerentes').exists():
+            return qs.filter(tienda=request.user.tienda)
+
+        # Vendedores solo ven sus propios pedidos
+        return qs.filter(vendedor=request.user)
+
+    def save_model(self, request, obj, form, change):
+        # Asignar automáticamente el vendedor actual si no está especificado
+        if not change:  # Solo para nuevos objetos
+            if not obj.vendedor:
+                obj.vendedor = request.user
+
+        super().save_model(request, obj, form, change)
+</code></pre>
+<h3 id="campos-visibles-segun-permisos">Campos visibles según permisos</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super().get_fieldsets(request, obj)
+
+        # Si no tiene permiso de costo, eliminar la sección financiera
+        if not request.user.has_perm('productos.view_financial'):
+            return [fs for fs in fieldsets if fs[0] != 'Información financiera']
+
+        return fieldsets
+
+    def get_readonly_fields(self, request, obj=None):
+        readonly_fields = list(super().get_readonly_fields(request, obj))
+
+        # Solo financieros pueden editar precios y costos
+        if not request.user.groups.filter(name='Financieros').exists():
+            readonly_fields.extend(['precio', 'costo', 'margen'])
+
+        return readonly_fields
+</code></pre>
+<h2 id="9-optimizacion-de-rendimiento">9. Optimización de Rendimiento</h2>
+<h3 id="optimizacion-de-consultas">Optimización de consultas</h3>
+<pre><code class="language-python">@admin.register(Pedido)
+class PedidoAdmin(admin.ModelAdmin):
+    list_select_related = ('cliente', 'tienda')  # Para ForeignKey y OneToOne
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        # Para relaciones inversas o ManyToMany
+        qs = qs.prefetch_related('items', 'pagos')
+
+        # Añadir anotaciones para valores calculados
+        qs = qs.annotate(
+            items_count=Count('items'),
+            pagos_sum=Sum('pagos__monto')
+        )
+
+        return qs
+</code></pre>
+<h3 id="paginacion-avanzada">Paginación avanzada</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_per_page = 50  # Elementos por página
+    list_max_show_all = 1000  # Máximo cuando se muestra &quot;todo&quot;
+    show_full_result_count = False  # Evita consulta COUNT en tablas grandes
+</code></pre>
+<h3 id="uso-de-caches">Uso de cachés</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    def get_categoria_nombre(self, obj):
+        # Usando caché de Django para optimizar
+        from django.core.cache import cache
+
+        cache_key = f&quot;categoria_nombre_{obj.categoria_id}&quot;
+        nombre = cache.get(cache_key)
+
+        if nombre is None:
+            nombre = obj.categoria.nombre
+            cache.set(cache_key, nombre, 3600)  # Caché por 1 hora
+
+        return nombre
+
+    get_categoria_nombre.short_description = &quot;Categoría&quot;
+</code></pre>
+<h2 id="10-personalizacion-completa-de-templates">10. Personalización Completa de Templates</h2>
+<h3 id="personalizacion-del-formulario-de-cambio">Personalización del formulario de cambio</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    change_form_template = 'admin/productos/producto/change_form.html'
+</code></pre>
+<p>En <code>templates/admin/productos/producto/change_form.html</code>:</p>
+<pre><code class="language-html">{% extends &quot;admin/change_form.html&quot; %}
+{% load i18n admin_urls static %}
+
+{% block content %}
+&lt;div class=&quot;custom-header&quot;&gt;
+    &lt;h2&gt;Edición de {{ original.nombre }}&lt;/h2&gt;
+    &lt;div class=&quot;stats&quot;&gt;
+        &lt;p&gt;Ventas: {{ original.total_ventas }}&lt;/p&gt;
+        &lt;p&gt;Valoración: {{ original.rating_promedio }}/5&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+{{ block.super }}  &lt;!-- Contenido original del formulario --&gt;
+
+{% if original %}
+&lt;div class=&quot;custom-footer&quot;&gt;
+    &lt;h3&gt;Historial de cambios&lt;/h3&gt;
+    &lt;ul&gt;
+        {% for log in original.get_historial %}
+        &lt;li&gt;{{ log.timestamp }} - {{ log.user }}: {{ log.message }}&lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+&lt;/div&gt;
+{% endif %}
+{% endblock %}
+</code></pre>
+<h3 id="personalizacion-de-la-pagina-de-lista">Personalización de la página de lista</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/productos/producto/change_list.html'
+</code></pre>
+<p>En <code>templates/admin/productos/producto/change_list.html</code>:</p>
+<pre><code class="language-html">{% extends &quot;admin/change_list.html&quot; %}
+{% load i18n admin_urls static %}
+
+{% block object-tools-items %}
+    &lt;li&gt;
+        &lt;a href=&quot;{% url 'admin:importar-productos' %}&quot; class=&quot;btn btn-high&quot;&gt;
+            Importar productos
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;{% url 'admin:exportar-productos' %}&quot; class=&quot;btn btn-high&quot;&gt;
+            Exportar productos
+        &lt;/a&gt;
+    &lt;/li&gt;
+    {{ block.super }}
+{% endblock %}
+
+{% block result_list %}
+    &lt;div class=&quot;custom-stats&quot;&gt;
+        &lt;h3&gt;Resumen&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Total productos: {{ cl.queryset.count }}&lt;/li&gt;
+            &lt;li&gt;Total en stock: {{ total_stock }}&lt;/li&gt;
+            &lt;li&gt;Valor inventario: ${{ valor_inventario }}&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    {{ block.super }}
+{% endblock %}
+</code></pre>
+<h3 id="personalizacion-de-la-pagina-de-eliminacion">Personalización de la página de eliminación</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    delete_confirmation_template = 'admin/productos/producto/delete_confirmation.html'
+</code></pre>
+<p>En el template:</p>
+<pre><code class="language-html">{% extends &quot;admin/delete_confirmation.html&quot; %}
+{% load i18n admin_urls %}
+
+{% block content %}
+    &lt;div class=&quot;alert alert-danger&quot;&gt;
+        &lt;strong&gt;¡Advertencia!&lt;/strong&gt; Estás a punto de eliminar el producto {{ object }}.
+
+        {% if associated_objects %}
+        &lt;p&gt;Este producto tiene los siguientes objetos asociados que también serán eliminados:&lt;/p&gt;
+        &lt;ul&gt;
+            {% for obj_type, objects in associated_objects.items %}
+            &lt;li&gt;{{ obj_type }}: {{ objects|length }} {{ objects|pluralize }}&lt;/li&gt;
+            {% endfor %}
+        &lt;/ul&gt;
+        {% endif %}
+    &lt;/div&gt;
+
+    {{ block.super }}
+{% endblock %}
+</code></pre>
+<h2 id="11-admin-extendido-con-paquetes-de-terceros">11. Admin Extendido con Paquetes de Terceros</h2>
+<h3 id="django-admin-interface">Django Admin Interface</h3>
+<p>Para personalizar completamente la interfaz (colores, temas, logo):</p>
+<pre><code class="language-bash">pip install django-admin-interface
+</code></pre>
+<p>Agregar a <code>INSTALLED_APPS</code>:</p>
+<pre><code class="language-python">INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
+    'django.contrib.admin',
+    # ...
+]
+</code></pre>
+<h3 id="django-import-export">Django Import Export</h3>
+<p>Para importar/exportar datos en diferentes formatos (CSV, Excel, JSON):</p>
+<pre><code class="language-bash">pip install django-import-export
+</code></pre>
+<p>Integración:</p>
+<pre><code class="language-python">from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
+class ProductoResource(resources.ModelResource):
+    class Meta:
+        model = Producto
+        import_id_fields = ('sku',)
+        fields = ('sku', 'nombre', 'descripcion', 'precio', 'stock', 'categoria__nombre')
+        export_order = ('sku', 'nombre', 'categoria__nombre', 'precio')
+
+@admin.register(Producto)
+class ProductoAdmin(ImportExportModelAdmin):
+    resource_class = ProductoResource
+</code></pre>
+<h3 id="django-admin-rangefilter">Django Admin Rangefilter</h3>
+<p>Para filtros de rango de fechas:</p>
+<pre><code class="language-bash">pip install django-admin-rangefilter
+</code></pre>
+<pre><code class="language-python">from rangefilter.filters import DateRangeFilter
+
+@admin.register(Pedido)
+class PedidoAdmin(admin.ModelAdmin):
+    list_filter = (
+        ('fecha_pedido', DateRangeFilter),
+        'estado',
+        'cliente',
+    )
+</code></pre>
+<h3 id="django-admin-actions">Django Admin Actions</h3>
+<p>Para acciones masivas avanzadas:</p>
+<pre><code class="language-bash">pip install django-admin-actions
+</code></pre>
+<pre><code class="language-python">from admin_actions.admin import ActionsModelAdmin
+
+@admin.register(Producto)
+class ProductoAdmin(ActionsModelAdmin):
+    actions_list = ['action_duplicate', 'action_export_csv']
+
+    def action_duplicate(self, request, queryset):
+        for obj in queryset:
+            obj.pk = None  # Crear copia
+            obj.nombre = f&quot;Copia de {obj.nombre}&quot;
+            obj.save()
+
+        return f&quot;{queryset.count()} elementos duplicados&quot;
+</code></pre>
+<h2 id="12-buenas-practicas">12. Buenas Prácticas</h2>
+<h3 id="organizacion-del-codigo">Organización del código</h3>
+<pre><code class="language-python"># admin.py limpio usando archivos separados
+
+# En admin/__init__.py
+from .producto import ProductoAdmin
+from .pedido import PedidoAdmin
+from .cliente import ClienteAdmin
+
+from django.contrib import admin
+from ..models import Producto, Pedido, Cliente
+
+admin.site.register(Producto, ProductoAdmin)
+admin.site.register(Pedido, PedidoAdmin)
+admin.site.register(Cliente, ClienteAdmin)
+
+# En admin/producto.py
+from django.contrib import admin
+from ..models import Producto
+
+class ProductoAdmin(admin.ModelAdmin):
+    # Todas las configuraciones del admin aquí
+</code></pre>
+<h3 id="decoradores-para-registrar-metodos">Decoradores para registrar métodos</h3>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'precio', 'estado_stock')
+
+    @admin.display(description=&quot;Estado Stock&quot;, ordering='stock')
+    def estado_stock(self, obj):
+        if obj.stock &lt;= 0:
+            return &quot;Agotado&quot;
+        elif obj.stock &lt; 10:
+            return f&quot;Bajo ({obj.stock})&quot;
+        return f&quot;Disponible ({obj.stock})&quot;
+</code></pre>
+<h3 id="admin-personalizado-a-nivel-de-sitio">Admin personalizado a nivel de sitio</h3>
+<pre><code class="language-python"># En myapp/admin.py
+from django.contrib import admin
+from django.contrib.admin import AdminSite
+from django.utils.translation import gettext_lazy as _
+
+class MiSitioAdmin(AdminSite):
+    site_header = _('Mi Empresa - Administración')
+    site_title = _('Portal de Administración')
+    index_title = _('Bienvenido al Portal')
+
+    # Personalizar la vista de login
+    login_template = 'admin/login_personalizado.html'
+
+    # Personalizar la respuesta de index
+    def index(self, request, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['estadisticas'] = obtener_estadisticas()
+        return super().index(request, extra_context)
+
+# Crear instancia de sitio personalizado
+mi_admin_site = MiSitioAdmin(name='miadmin')
+
+# Registrar modelos en el sitio personalizado
+from .models import Producto, Categoria
+
+@admin.register(Producto, site=mi_admin_site)
+class ProductoAdmin(admin.ModelAdmin):
+    # Configuración usual
+    list_display = ('nombre', 'precio')
+
+# En el archivo principal urls.py
+from myapp.admin import mi_admin_site
+
+urlpatterns = [
+    path('miadmin/', mi_admin_site.urls),
+    path('admin/', admin.site.urls),  # Mantener admin original o remover
+]
+</code></pre>
+<h3 id="administracion-de-registros-y-paginas-completas">Administración de registros y páginas completas</h3>
+<p>Supongamos que queremos un panel de administración con estadísticas:</p>
+<pre><code class="language-python">@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/productos/producto/change_list.html'
+
+    def changelist_view(self, request, extra_context=None):
+        response = super().changelist_view(request, extra_context=extra_context)
+
+        # Solo agregar estadísticas si no es error ni redirect
+        if hasattr(response, 'context_data'):
+            # Obtener queryset filtrado por los filtros aplicados
+            qs = response.context_data['cl'].queryset
+
+            extra_context = extra_context or {}
+            extra_context.update({
+                'total_productos': qs.count(),
+                'total_stock': qs.aggregate(total=Sum('stock'))['total'] or 0,
+                'valor_inventario': qs.aggregate(total=Sum(F('precio') * F('stock')))['total'] or 0,
+                'categorias': Categoria.objects.annotate(
+                    productos_count=Count('productos')
+                ).order_by('-productos_count')[:5],
+                'graficos_data': obtener_datos_graficos(qs),
+            })
+            response.context_data.update(extra_context)
+
+        return response
+</code></pre>
+<h3 id="integracion-con-django-rest-framework-para-api-admin">Integración con Django Rest Framework para API Admin</h3>
+<pre><code class="language-python">from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import viewsets, permissions
+from django.contrib import admin
+
+# En api.py
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @action(detail=False, methods=['get'])
+    def estadisticas(self, request):
+        return Response({
+            'total': Producto.objects.count(),
+            'total_activos': Producto.objects.filter(activo=True).count(),
+            'valor_inventario': Producto.objects.filter(activo=True).aggregate(
+                valor=Sum(F('precio') * F('stock'))
+            )['valor'] or 0,
+        })
+
+# En admin.py
+@admin.register(Producto)
+class ProductoAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/productos/producto/change_list.html'
+
+    # Añadir endpoints de la API al contexto
+    def changelist_view(self, request, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['api_estadisticas_url'] = reverse('producto-estadisticas')
+        return super().changelist_view(request, extra_context=extra_context)
+</code></pre>
+<p>En la plantilla, puedes usar JavaScript para consumir la API y mostrar datos dinámicos:</p>
+<pre><code class="language-html">{% extends &quot;admin/change_list.html&quot; %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+&lt;script src=&quot;{% static 'admin/js/jquery.min.js' %}&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{% static 'admin/js/chart.min.js' %}&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function() {
+    // Consumir API desde JavaScript
+    $.getJSON(&quot;{{ api_estadisticas_url }}&quot;, function(data) {
+        // Actualizar estadísticas dinámicas
+        $(&quot;#total_productos&quot;).text(data.total);
+        $(&quot;#valor_inventario&quot;).text(&quot;$&quot; + data.valor_inventario.toFixed(2));
+
+        // Renderizar gráficos
+        // ...
+    });
+});
+&lt;/script&gt;
+{% endblock %}
+
+{% block content %}
+&lt;div class=&quot;dashboard&quot;&gt;
+    &lt;div class=&quot;stat-box&quot;&gt;
+        &lt;h3&gt;Total productos&lt;/h3&gt;
+        &lt;div id=&quot;total_productos&quot;&gt;Cargando...&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stat-box&quot;&gt;
+        &lt;h3&gt;Valor del inventario&lt;/h3&gt;
+        &lt;div id=&quot;valor_inventario&quot;&gt;Cargando...&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;chart-container&quot;&gt;
+        &lt;canvas id=&quot;productos-chart&quot;&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+{{ block.super }}
+{% endblock %}
+</code></pre>
+<h2 id="conclusion-y-resumen">Conclusión y Resumen</h2>
+<p>El Django Admin es una herramienta extremadamente potente que puede adaptarse a casi cualquier necesidad de administración interna. Las claves principales para aprovecharlo al máximo son:</p>
+<ol>
+<li><strong>Personalización incremental</strong>: Comienza con el registro básico, luego personaliza la lista, luego los formularios, etc.</li>
+<li><strong>Separación de responsabilidades</strong>: Utiliza clases auxiliares como ModelForm, Resources, Filters, etc.</li>
+<li><strong>Optimización</strong>: Usa select_related, prefetch_related para evitar consultas N+1.</li>
+<li><strong>Seguridad por capas</strong>: Implementa permisos a nivel de modelo, objeto y campo.</li>
+<li><strong>Extensibilidad</strong>: No dudes en agregar vistas personalizadas para necesidades específicas.</li>
+<li><strong>Reutilización</strong>: Crea clases base con comportamiento compartido.</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
