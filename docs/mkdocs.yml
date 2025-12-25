@@ -3,6 +3,7 @@ nav:
   - Inicio: index.md
   - Django:
       - Modelos: django/modelos.md
+      - Admin de Django: django/admin.md
   - Paquetes:
       - Extensiones Esenciales: paquetes/extensiones.md
   - Primeros Pasos:
