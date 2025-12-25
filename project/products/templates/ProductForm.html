@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  Crear producto
+{% endblock %}
+
+{% block content %}
+  <div class="row g-4 p-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="fs-1 fw-bold">Crear producto</h5>
+          <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

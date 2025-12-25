@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+  <head>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Django Project
+      {% endblock %}
+    </title>
+  </head>
+  <body class="bg-body-tertiary">
+    <div class="container-fluid">
+      <!-- {% bootstrap_messages %} -->
+      {% block content %}
+        <!-- row - col - card -->
+      {% endblock %}
+    </div>
+    <script src="https://kit.fontawesome.com/f89f8ae43b.js" crossorigin="anonymous"></script>
+  </body>
+</html>

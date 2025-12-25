@@ -1,0 +1,12 @@
+site_name: Curso Django Completo
+nav:
+  - Inicio: index.md
+  - Django:
+      - Modelos: django/modelos.md
+  - Paquetes:
+      - Extensiones Esenciales: paquetes/extensiones.md
+  - Primeros Pasos:
+      - Configuración Inicial: primeros-pasos/configuracion-inicial.md
+      - Usuarios, Autenticación y Perfiles: primeros-pasos/usuarios-autenticacion-perfiles.md
+  - Produccion:
+      - Configuración para Producción: produccion/preparar-produccion.md
