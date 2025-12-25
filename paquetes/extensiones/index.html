@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Extensiones Esenciales - Curso Django Completo</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Curso Django Completo</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Django</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../django/modelos/" class="dropdown-item">Modelos</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Paquetes</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Extensiones Esenciales</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Primeros Pasos</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../primeros-pasos/configuracion-inicial/" class="dropdown-item">Configuración Inicial</a>
+</li>
+                                    
+<li>
+    <a href="../../primeros-pasos/usuarios-autenticacion-perfiles/" class="dropdown-item">Usuarios, Autenticación y Perfiles</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Produccion</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../produccion/preparar-produccion/" class="dropdown-item">Configuración para Producción</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../django/modelos/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../primeros-pasos/configuracion-inicial/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#paquetes-que-te-recomiendo-cuando-trabajes-con-django" class="nav-link">Paquetes que te recomiendo cuando trabajes con Django</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-bootstrap" class="nav-link">1. Bootstrap</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-python-dot-env" class="nav-link">2. Python Dot Env</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-django-htmx" class="nav-link">3. Django HTMX</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="paquetes-que-te-recomiendo-cuando-trabajes-con-django">Paquetes que te recomiendo cuando trabajes con Django</h1>
+<h2 id="1-bootstrap">1. Bootstrap</h2>
+<p>Ideal para cuando el frontend debe salir rapido, <a href="https://pypi.org/project/django-bootstrap5/">Documentacion oficial</a>.</p>
+<p>Comando de instalacion:</p>
+<pre><code class="language-bash">pip install django-bootstrap5
+</code></pre>
+<p>Configuracion en el settings.py:</p>
+<pre><code class="language-python">INSTALLED_APPS = [
+    ...
+    # terceros
+    &quot;django_bootstrap5&quot;, # agregar esta linea
+]
+</code></pre>
+<p>Preparar la carpeta de templates para que funcione tambien fuera de las apps que hagas en django:</p>
+<pre><code class="language-python">TEMPLATES = [
+    {
+        &quot;BACKEND&quot;: &quot;django.template.backends.django.DjangoTemplates&quot;,
+        &quot;DIRS&quot;: [
+            BASE_DIR / &quot;templates&quot;, # agregar esta linea
+        ],
+        &quot;APP_DIRS&quot;: True,
+        &quot;OPTIONS&quot;: {
+            &quot;context_processors&quot;: [
+                &quot;django.template.context_processors.request&quot;,
+                &quot;django.contrib.auth.context_processors.auth&quot;,
+                &quot;django.contrib.messages.context_processors.messages&quot;,
+            ],
+        },
+    },
+]
+</code></pre>
+<p>Crear la plantilla base:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    {% load django_bootstrap5 %} &lt;!-- Agregar estas lineas al template de base para tener estilos y funcionalidad de js --&gt;
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;
+      {% block title %}
+        Django Project
+      {% endblock %}
+    &lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;container-fluid&quot;&gt;
+      {% bootstrap_messages %} &lt;!-- Esto se integra genial con la API de mensajes de django --&gt;
+        {% block content %}
+            &lt;!-- row - col - card --&gt;
+        {% endblock %}
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="2-python-dot-env">2. Python Dot Env</h2>
+<p>Este paquete es muy importate para usar archivos .env y no exponer credenciales importantes, <a href="https://pypi.org/project/python-dotenv/">Pagina de pypi</a>.</p>
+<p>Comando de instalacion:</p>
+<pre><code class="language-bash">pip install python-dotenv
+</code></pre>
+<p>Ahora creamos nuestro archivo <strong>.env</strong> a nivel del proyecto</p>
+<p><img alt="Archivos nivel proyecto" src="../../images/dotenv_uno.png" /></p>
+<p>Ahora agreamos el siguiente codigo en el <strong>settings.py</strong> casi al inicio del archivo</p>
+<pre><code class="language-python">from pathlib import Path
+import os # agregamos esta linea
+from dotenv import load_dotenv # este el paquete que acabamos de instalar
+
+load_dotenv()  # Cargar variables de entorno desde un archivo .env si existe
+
+...
+
+DEBUG = os.getenv(&quot;DJANGO_DEBUG&quot;) # accedemos a la variable de entorno definida en .env
+</code></pre>
+<h2 id="3-django-htmx">3. Django HTMX</h2>
+<p>HTMX es una libreria que permite hacer aplicaciones web mas dinamicas sin necesidad de usar tanto javascript, <a href="https://django-htmx.readthedocs.io/en/latest/installation.html">Documentacion oficial</a>.</p>
+<p>Comando de instalacion:</p>
+<pre><code class="language-bash">pip install django-htmx
+</code></pre>
+<p>Ahora tenemos que poner esta app en las apps instaladas de django:</p>
+<pre><code class="language-python">INSTALLED_APPS = [
+  #...
+  &quot;django_htmx&quot;,
+]
+</code></pre>
+<p>y finalmente agregamos el middleware:</p>
+<pre><code class="language-python">
+MIDDLEWARE = [
+    #...
+    &quot;django_htmx.middleware.HtmxMiddleware&quot;,
+]
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
